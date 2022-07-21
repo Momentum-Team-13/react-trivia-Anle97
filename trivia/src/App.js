@@ -5,9 +5,9 @@ import Header from "./components/Header/Header.js"
 import Home from "./pages/Home/Home.js";
 import Quiz from "./pages/Quiz/Quiz.js";
 import Results from "./pages/Results/Results.js";
+import { useEffect } from "react";
 
 function App() {
-
   return (
     <BrowserRouter>
       <div className="container">
