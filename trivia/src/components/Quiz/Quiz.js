@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Home from '../Home/Home'
 import { useState } from 'react'
+import App from '../../App'
 
 export default function Quiz() {
     return (
