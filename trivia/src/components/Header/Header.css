@@ -1,0 +1,25 @@
+.headerBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    color: black
+}
+
+.header:link {
+    text-decoration: none;
+  }
+  
+.header:visited {
+    text-decoration: none;
+  }
+  
+.header:hover {
+    text-decoration: none;
+  }
+  
+.header:active {
+    text-decoration: none;
+  }
