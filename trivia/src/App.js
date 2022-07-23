@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react"
-import { categoryFetch, questionFetch } from './utils/opentdbAPI'
+import { categoryFetch } from './utils/opentdbAPI'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header.js";
 import Quiz from "./components/Quiz/Quiz.js";
@@ -22,7 +22,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home categories={categories}/>} />
-          <Route path="/quiz/:id" element={<Quiz categories={categories}/>} />
+          <Route path="/quiz/:id" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
         </Routes>
       </div>

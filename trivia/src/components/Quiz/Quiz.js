@@ -1,14 +1,20 @@
-import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import Axios from 'axios'
-import Home from '../Home/Home'
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { questionFetch } from "../../utils/opentdbAPI";
 
-export default function Quiz({categories}) {
-  const [questions, setQuestions] = useState([])
+export default function Quiz() {
+  const location = useLocation();
+  const idLocation = location.pathname
 
-    return (
-      <div className="quiz">
+  useEffect(() => {
+    questionFetch(idLocation.slice(6))
+    .then((response) => 
+    console.log(response))
+  },[])
 
-      </div>
-    );
-  }
+  // const x = () => {
+  //   console.log(location)
+  // }
+  // x()
+  return <div className="quiz"></div>;
+}
