@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { categoryFetch } from './utils/opentdbAPI'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header.js";
-import Quiz from "./components/Quiz/Quiz.js";
+import Quiz from "./components/QuizLogic/Quiz.js";
 import Home from "./components/Home/Home.js"
 import Results from "./components/Results/Results.js";
 

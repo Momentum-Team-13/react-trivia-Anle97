@@ -12,7 +12,7 @@ export const categoryFetch = () => {
 
 export const questionFetch = (id) => {
     return Axios
-    .get(`https://opentdb.com/api.php?amount=10&category=${id}`)
+    .get(`https://opentdb.com/api.php?amount=10&category=${id}&type=multiple`)
     .then((response) =>
     (response.data.results)
     )
