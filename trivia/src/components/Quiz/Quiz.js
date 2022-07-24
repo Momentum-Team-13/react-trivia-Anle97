@@ -33,8 +33,11 @@ export default function Quiz() {
 
   const handleAnswerClick = (answer) => {
     if (answer === questions[questionNumber].correct_answer) {
-      setScore(score + 1)
-      }
+      alert("Nice job! That was correct.")
+      setScore(score + 1);  
+    } else {
+      alert(`Oops! The correct answer was ${questions[questionNumber].correct_answer}`)
+    }
     if (questionNumber != questions.length - 1) {
       changeQuestion(questionNumber + 1)
     } else {
@@ -48,10 +51,11 @@ export default function Quiz() {
   return (
     <>
       {showScore ? (
-        <div className="score">You got {score} out of 10 right!</div>
+        <div className="score">You got {score} out of 10 right! Click the logo above to return to the home screen.</div>
       ) : (
         <>
-          <h2>Game Category: {questions[questionNumber].category}</h2>
+          <h3>Game Category: {questions[questionNumber].category}</h3>
+
           <div className="question">
             <h3>
               Question {questionNumber + 1}:{" "}
@@ -63,6 +67,7 @@ export default function Quiz() {
               return <button onClick={() => handleAnswerClick(answer)}>{answer}</button>
             })}
           </div>
+          <span>Current Score: {score}</span>
         </>
       )}
     </>
