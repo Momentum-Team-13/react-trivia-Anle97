@@ -10,7 +10,29 @@ export default function Quiz() {
   const location = useLocation();
   const idLocation = location.pathname;
 
-  const handleAnswerClick = (answerChoices) => {
+  useEffect(() => {
+    questionFetch(idLocation.slice(6)).then((response) =>
+      setQuestions(response)
+    );
+  }, []);
+
+  const x = () => {
+    console.log(questions);
+  };
+  x();
+
+  const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+
+  const answerChoices = [
+    (questions[questionNumber].incorrect_answers[0]: false),
+    (questions[questionNumber].incorrect_answers[1] : false),
+    (questions[questionNumber].incorrect_answers[2] : false),
+    (questions[questionNumber].correct_answer : true)
+  ];
+
+  const randomAnswerChoices = shuffle(answerChoices)
+
+  const handleAnswerClick = () =>{ 
     if (questionNumber != questions.length - 1) {
       changeQuestion(questionNumber + 1);
     } else {
@@ -18,28 +40,15 @@ export default function Quiz() {
     }
   };
 
-  useEffect(() => {
-    questionFetch(idLocation.slice(6)).then((response) =>
-      setQuestions(response)
-    );
-  }, []);
-
-  const answerChoices = [
-    questions[questionNumber].incorrect_answers[0],
-    questions[questionNumber].incorrect_answers[1],
-    questions[questionNumber].incorrect_answers[2],
-    questions[questionNumber].correct_answer,
-  ];
-
-  const x = () => {
-    console.log(questions);
+  const y = () => {
+    console.log(randomAnswerChoices);
   };
-  x();
+  y();
 
-  // const y = () => {
-  //   console.log(answerChoices);
-  // };
-  // y();
+  const z = () => {
+    console.log(answerChoices);
+  };
+  z();
 
   return (
     <>
@@ -49,13 +58,13 @@ export default function Quiz() {
         <>
           <h2>Category chosen is : {questions[questionNumber].category}</h2>
           <div className="question">
-            <h3>{questions[questionNumber].question}</h3>
+            <h3>Question {questionNumber + 1}: {questions[questionNumber].question}</h3>
           </div>
           <div className="answer-choices">
-            <button onClick={handleAnswerClick}>{answerChoices[0]}</button>
-            <button onClick={handleAnswerClick}>{answerChoices[1]}</button>
-            <button onClick={handleAnswerClick}>{answerChoices[2]}</button>
-            <button onClick={handleAnswerClick}>{answerChoices[3]}</button>
+            <button onClick={handleAnswerClick}>{randomAnswerChoices[0]}</button>
+            <button onClick={handleAnswerClick}>{randomAnswerChoices[1]}</button>
+            <button onClick={handleAnswerClick}>{randomAnswerChoices[2]}</button>
+            <button onClick={handleAnswerClick}>{randomAnswerChoices[3]}</button>
           </div>
         </>
       )}
