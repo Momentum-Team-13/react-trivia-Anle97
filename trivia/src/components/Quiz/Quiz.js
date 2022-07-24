@@ -31,24 +31,19 @@ export default function Quiz() {
 
   const randomAnswerChoices = shuffle(answerChoices);
 
-  const handleAnswerClick = () => {
-    setScore(score + 1);
+  const handleAnswerClick = (answer) => {
+    if (answer === questions[questionNumber].correct_answer) {
+      setScore(score + 1)
+      }
     if (questionNumber != questions.length - 1) {
-      changeQuestion(questionNumber + 1);
+      changeQuestion(questionNumber + 1)
     } else {
       setShowScore(true);
     }
   };
-
-  // const y = () => {
-  //   console.log(randomAnswerChoices);
-  // };
-  // y();
-
-  // const z = () => {
-  //   console.log(answerChoices);
-  // };
-  // z();
+  
+  // console.log(score)
+  // console.log(questions[questionNumber].correct_answer);
 
   return (
     <>
@@ -56,7 +51,7 @@ export default function Quiz() {
         <div className="score">You got {score} out of 10 right!</div>
       ) : (
         <>
-          <h2>Category chosen is : {questions[questionNumber].category}</h2>
+          <h2>Game Category: {questions[questionNumber].category}</h2>
           <div className="question">
             <h3>
               Question {questionNumber + 1}:{" "}
@@ -64,18 +59,9 @@ export default function Quiz() {
             </h3>
           </div>
           <div className="answer-choices">
-            <button onClick={handleAnswerClick}>
-              {randomAnswerChoices[0]}
-            </button>
-            <button onClick={handleAnswerClick}>
-              {randomAnswerChoices[1]}
-            </button>
-            <button onClick={handleAnswerClick}>
-              {randomAnswerChoices[2]}
-            </button>
-            <button onClick={handleAnswerClick}>
-              {randomAnswerChoices[3]}
-            </button>
+            {randomAnswerChoices.map(answer => {
+              return <button onClick={() => handleAnswerClick(answer)}>{answer}</button>
+            })}
           </div>
         </>
       )}
